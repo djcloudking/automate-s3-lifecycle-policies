@@ -1,0 +1,1 @@
+# automate-s3-lifecycle-policies

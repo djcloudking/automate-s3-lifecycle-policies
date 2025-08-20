@@ -26,56 +26,6 @@ s3-lifecycle-policy/
 └── README.md
 ```
 
----
-
-## Code Implementation
-
-```python
-import boto3
-
-s3 = boto3.client('s3')
-
-bucket_name = 'djmyhambucket'
-
-lifecycle_policy = {
-    'Rules': [
-        {
-            'ID': 'MoveToIA',
-            'Prefix': '',
-            'Status': 'Enabled',
-            'Transitions': [
-                {
-                    'Days': 30,
-                    'StorageClass': 'STANDARD_IA'
-                },
-            ],
-            'Expiration': {
-                'Days': 365
-            }
-        }
-    ]
-}
-
-s3.put_bucket_lifecycle_configuration(
-    Bucket=bucket_name,
-    LifecycleConfiguration=lifecycle_policy
-)
-
-print(f"Lifecycle policy applied to {bucket_name}")
-```
-
----
-
-## 🖥️ Example Output
-
-When executed, the script confirms the policy:
-
-```bash
-Lifecycle policy applied to djmyhambucket
-```
-
----
-
 ## Getting Started
 
 ### Prerequisites
